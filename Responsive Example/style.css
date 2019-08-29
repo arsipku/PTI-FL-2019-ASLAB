@@ -28,6 +28,7 @@ header div img{
     height: auto;
 }
 
+/* It will adapt to your monitor and set the max size of the content */
 @media screen and (max-width: 400px){
     header div{
         margin: 0;
