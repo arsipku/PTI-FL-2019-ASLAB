@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="main.css" media="screen" title="no title" charset="utf-8">
+    <script>
+        function onDocumentFinish() {
+            var createdBy = window.prompt('Who are you ? ')
+            //meng-attach fungsi saat form dengan id frmSubmit di submit
+            document.getElementById('frmSubmit').onsubmit = function (form) {
+                //mencegah form me-refresh halaman HTML
+                form.preventDefault();
+                let item = {
+                    name: '', //atribut milik objek
+                    price: '', //atribut milik objek
+                    category: '',
+                    description: '', //atribut milik objek
+                    //method milik objek
+                    isItemValid: function () {
+                        if (this.price !== '' && this.price !== '' && this.description !== '' && this
+                            .category !== '') {
+                            return true;
+                        }
+                        return false;
+                    },
+                    addToTable: function () {
+                        //tampung tbody
+                        const tbody = document.getElementById('tableItem').querySelector('tbody');
+                        //membuat row baru
+                        const newRow = document.createElement("tr");
+                        //membuat column baru
+                        const nameCol = document.createElement("td");
+                        //membuat tulisan di dalam kolom berdasarkan data
+                        nameCol.appendChild(document.createTextNode(this.name));
+                        const categoryCol = document.createElement("td");
+                        categoryCol.appendChild(document.createTextNode(this.category));
+                        const priceCol = document.createElement("td");
+                        priceCol.appendChild(document.createTextNode(this.price));
+                        const descCol = document.createElement("td");
+                        descCol.appendChild(document.createTextNode(this.description));
+                        //menambahkn kolom pada baris
+                        newRow.appendChild(nameCol);
+                        newRow.appendChild(priceCol);
+                        newRow.appendChild(descCol);
+                        newRow.appendChild(categoryCol);
+                        //menambahakan row baru pada tbody
+                        tbody.appendChild(newRow);
+                    },
+                    fillProperty: function (dataSource) {
+                        //mengisi data objek sesuai dengan data pada form
+                        item.name = dataSource.target['itemName'].value;
+                        item.price = dataSource.target['itemAlamat'].value;
+                        item.description = dataSource.target['itemTelp'].value;
+                        item.category = dataSource.target['itemStatus'].value;
+                    }
+                }
+                item.fillProperty(form);
+                if (item.isItemValid()) {
+                    item.addToTable()
+                    var jumlah = document.getElementById("tableItem").rows.length - 1;
+                    document.getElementById("headerJumlah").innerHTML = "Jumlah data Orang sekarang ada : " +
+                    jumlah;
+                    document.getElementById("frmSubmit").reset();
+                } else {
+                    alert('All fields must not empty!')
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onload="onDocumentFinish()">
+    <div class="col-12">
+        <div class="col-12 header">
+            <h1 id="headerJumlah">Jumlah data Orang sekarang ada : 2</h1>
+        </div>
+        <div class="col-4">
+        </div>
+        <div class="col-4 center">
+            <div class="col-12">
+                <table id="tableItem" class="col-12">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>Nomor Telepon</th>
+                            <th>Status Hubungan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Budi</td>
+                            <td>Jl. Pencerdasan Bangsa Timur No. 2, Kelurahan teluk segara, Bengkulu</td>
+                            <td>085283729525</td>
+                            <td>Banyak Pacar</td>
+                        </tr>
+                        <tr>
+                            <td>Wati</td>
+                            <td>Jl. Jendral Sudirman No. 8, RT 2 RW 3 Kelurahan Sumur Meleleh, Tangerang</td>
+                            <td>08592323256</td>
+                            <td>Setia Pada Satu</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12">
+                <form id="frmSubmit" onsubmit="submitItem()">
+                    <label for="itemName">Nama</label>
+                    <input type="text" name="itemName" id="itemName" />
+                    <label for="itemAlamat">Alamat</label>
+                    <input type="text" name="itemAlamat" id="itemAlamat" />
+                    <label for="itemTelp">Nomor Telepon</label>
+                    <input type="number" name="itemTelp" id="itemTelp" />
+                    <label for="itemStatus">Status Hubungan</label>
+                    <select name="itemStatus" id="itemStatus">
+                        <option value="Banyak Pacar">Banyak Pacar</option>
+                        <option value="Setia pada Satu">Setia Pada Satu</option>
+                        <option value="LDR">LDR</option>
+                        <option value="Hubungan Tanpa Status">Hubungan Tanpa Status</option>
+                        <option value="JOMBLO AKUT">JOMBLO AKUT</option>
+                    </select>
+                    <input type="submit" id="btnSubmit" value="submit" />
+                </form>
+            </div>
+        </div>
+        <div class="col-12 footer">
+            <h1>Created By Yehezkiel Gunawan - 00000014458</h1>
+        </div>
+    </div>
+</body>
+
+</html>
