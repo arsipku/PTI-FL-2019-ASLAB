@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="home.css">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 id="colour">#E63C44</h1>
+        <button id="change" type="button">New Colour</button> <br>
+        <button id="logout_btn" type="button"><b>LOGOUT</b></button>
+    </div>
+
+    <script>
+        var btn = document.getElementById('change');
+        var text = document.getElementById('colour');
+        var logout_btn = document.getElementById('logout_btn');
+
+        var generator = function () {
+            newColour = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+            console.log(newColour.length);
+            if (newColour.length < 7) {
+                generator();
+            }
+        }
+
+        btn.addEventListener('click', function () {
+            generator();
+            document.body.style.background = newColour;
+            btn.style.color = newColour;
+            text.innerText = newColour;
+        })
+
+        logout_btn.addEventListener('click', function(){
+            window.location.assign("index.html");
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
