@@ -1,0 +1,3 @@
+[submodule "testAngular/my-app"]
+	path = testAngular/my-app
+	url = https://github.com/yehezkielgunawan/PTI-FL-2019-ASLAB.git
