@@ -1,0 +1,11 @@
+Kerjakan modul yang ada di menu Announcement (Updated Week14)
+*Node Modules jangan ikutan di-zip saat submit
+*Yang selesai kerjakan modul di kelas, perlihatkan hasil akhir ke aslab dan isi NIM-Nama di PC/laptop aslab di depan
+*Wifi Darurat (max 8 org): SSID=Yehezkiel Gunawan   Pass=pti-fl-2019 
+
+
+
+NIM - Nama (Contoh : 00000014458 - Yehezkiel Gunawan)
+
+1. 
+2. 

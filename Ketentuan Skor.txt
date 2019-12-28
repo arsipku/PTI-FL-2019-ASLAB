@@ -1,0 +1,13 @@
+Minimum spec nya:
+Login, register, update profile
+Display all data
+Detail data
+Favorite/booking feature (locally)
+Profile page
+Max score : 75
+
+Recommended spec:
++Search and sort data
++Beautiful styling
++New feature
+Max score : 100
